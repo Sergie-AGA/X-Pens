@@ -2,8 +2,12 @@ import logoImg from "../../assets/android-chrome-192x192.png";
 import { Container, Segment, Totals } from "./styles";
 import { FaMoneyBill, FaHandHoldingUsd } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import { useContext } from "react";
+import { TransactionsContext } from "../../TransactionsContext";
 
 export function Header() {
+  const { transactions } = useContext(TransactionsContext);
+
   return (
     <Container>
       <Segment>

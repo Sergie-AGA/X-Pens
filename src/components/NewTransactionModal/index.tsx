@@ -6,8 +6,9 @@ import {
   ValueContainer,
 } from "./styles";
 import { FaTimes, FaArrowCircleUp, FaArrowCircleDown } from "react-icons/fa";
+import { TransactionsContext } from "../../TransactionsContext";
 import { IconContext } from "react-icons";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useContext } from "react";
 import { IconSection } from "./IconsSection";
 import { api } from "../../services/api";
 
@@ -20,6 +21,8 @@ export function NewTransactionModal({
   isOpen,
   onRequestClose,
 }: NewTransactionModalprops) {
+  const { createTransaction } = useContext(TransactionsContext);
+
   const [title, setTitle] = useState("");
   const [value, setValue] = useState(0);
   const [type, setType] = useState("");
@@ -27,14 +30,13 @@ export function NewTransactionModal({
 
   function handleCreateNewTransaction(e: FormEvent) {
     e.preventDefault();
-    const data = {
+
+    createTransaction({
       title,
       value,
-      type,
       category,
-    };
-
-    api.post("/transactions", data);
+      type,
+    });
   }
 
   function updateCategory(typeCategory: string) {
