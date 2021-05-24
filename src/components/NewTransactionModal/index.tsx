@@ -28,15 +28,22 @@ export function NewTransactionModal({
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
 
-  function handleCreateNewTransaction(e: FormEvent) {
+  async function handleCreateNewTransaction(e: FormEvent) {
     e.preventDefault();
 
-    createTransaction({
+    await createTransaction({
       title,
       value,
       category,
       type,
     });
+
+    setTitle("");
+    setValue(0);
+    setType("");
+    setCategory("");
+
+    onRequestClose();
   }
 
   function updateCategory(typeCategory: string) {
