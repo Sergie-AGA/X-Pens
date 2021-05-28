@@ -8,6 +8,30 @@ import { TransactionsContext } from "../../TransactionsContext";
 export function Header() {
   const { transactions } = useContext(TransactionsContext);
 
+// Example below shows how to handle with reduce, but it would need 3 of the same
+//   const totalDeposits = transactions.reduce((acc, transaction) => {
+// if (transaction.type === 'expense') {
+//   return acc + transaction.value
+// } 
+// return acc
+//   }, 0)
+
+const summary = transactions.reduce((acc, transaction) => {
+
+if (transaction.type ==="expense") {
+acc.expense += transaction.value
+acc.total -= transaction.value
+} else {
+  acc.income += transaction.value
+  acc.total += transaction.value
+}
+ return acc
+}, {
+  expense: 0,
+  income: 0,
+  total: 0,
+})
+
   return (
     <Container>
       <Segment>
@@ -22,7 +46,10 @@ export function Header() {
               <FaMoneyBill />
             </h2>
             <strong>
-              <span>£</span>12.000
+              <span>£</span> {new Intl.NumberFormat("en-UK", {
+                      style: "currency",
+                      currency: "GBP",
+                    }).format(summary.income)}
             </strong>
           </IconContext.Provider>
         </div>
@@ -33,7 +60,10 @@ export function Header() {
               <FaMoneyBill />
             </h2>
             <strong>
-              <span>£</span>8.000
+              <span>£</span>{new Intl.NumberFormat("en-UK", {
+                      style: "currency",
+                      currency: "GBP",
+                    }).format(summary.expense)}
             </strong>
           </IconContext.Provider>
         </div>
@@ -44,7 +74,10 @@ export function Header() {
               <FaHandHoldingUsd />
             </h2>
             <strong>
-              <span style={{ color: "#1ad442" }}>£</span>4.000
+              <span style={{ color: "#1ad442" }}>£</span>{new Intl.NumberFormat("en-UK", {
+                      style: "currency",
+                      currency: "GBP",
+                    }).format(summary.total)}
             </strong>
           </IconContext.Provider>
         </div>
