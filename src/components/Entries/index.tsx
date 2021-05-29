@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Container } from "./styles";
 import { IconContext } from "react-icons";
-import { TransactionsContext } from "../../TransactionsContext";
+
 import { EntryIcon } from "./Entry/index";
+import { useTransactions } from "../../hooks/useTransactions";
 
 export function Entries() {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions } = useTransactions();
 
   return (
     <Container>

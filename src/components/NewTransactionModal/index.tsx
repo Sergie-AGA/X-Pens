@@ -6,11 +6,12 @@ import {
   ValueContainer,
 } from "./styles";
 import { FaTimes, FaArrowCircleUp, FaArrowCircleDown } from "react-icons/fa";
-import { TransactionsContext } from "../../TransactionsContext";
+
 import { IconContext } from "react-icons";
 import { useState, FormEvent, useContext } from "react";
 import { IconSection } from "./IconsSection";
 import { api } from "../../services/api";
+import { useTransactions } from "../../hooks/useTransactions";
 
 interface NewTransactionModalprops {
   isOpen: boolean;
@@ -21,7 +22,7 @@ export function NewTransactionModal({
   isOpen,
   onRequestClose,
 }: NewTransactionModalprops) {
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState("");
   const [value, setValue] = useState(0);
