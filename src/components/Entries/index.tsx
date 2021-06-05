@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Container } from "./styles";
 import { IconContext } from "react-icons";
 
@@ -15,9 +14,7 @@ export function Entries() {
           return (
             <div
               className={`transactionItem ${
-                transaction.category === "expense"
-                  ? "expense-box"
-                  : "income-box"
+                transaction.type === "expense" ? "expense-box" : "income-box"
               }`}
               key={transaction.id}>
               <IconContext.Provider value={{ color: "white", size: "2.5rem" }}>

@@ -6,6 +6,7 @@ export const Container = styled.section`
   max-width: 1200px;
   margin: auto;
   height: calc(100vh - 385px);
+  overflow: auto;
   @media (max-width: 780px) {
     height: calc(100vh - 325px);
   }
@@ -14,15 +15,18 @@ export const Container = styled.section`
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    @media (max-width: 780px) {
-      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-    }
+
     grid-gap: 1rem 0.5rem;
   }
+  .expense-box {
+    background-color: #d96a59;
+  }
+  .income-box {
+    background-color: #3c914a;
+  }
   .transactionItem {
-    background-color: #669;
     border-radius: 10px;
-    width: 15rem;
+    /* width: 15rem; */
     height: 6rem;
     display: flex;
     position: relative;

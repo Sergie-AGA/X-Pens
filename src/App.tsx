@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { Header } from "./components/Header";
 import { Button1 } from "./components/Button1";
+import { Button2 } from "./components/Button2";
 import { GlobalStyle } from "./styles/global";
 import { Entries } from "./components/Entries";
 import { NewTransactionModal } from "./components/NewTransactionModal";
@@ -31,6 +32,7 @@ function App() {
         onRequestClose={handleCloseNewTransactionModal}
       />
       <GlobalStyle />
+      <Button2 onOpenNewTransactionModal={handleOpenNewTransactionModal} />
     </TransactionsProvider>
   );
 }

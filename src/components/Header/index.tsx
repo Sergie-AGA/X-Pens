@@ -2,7 +2,6 @@ import logoImg from "../../assets/android-chrome-192x192.png";
 import { Container, Segment, Totals } from "./styles";
 import { FaMoneyBill, FaHandHoldingUsd } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { useContext } from "react";
 
 import { useTransactions } from "../../hooks/useTransactions";
 
@@ -49,7 +48,6 @@ export function Header() {
               <FaMoneyBill />
             </h2>
             <strong>
-              <span>£</span>{" "}
               {new Intl.NumberFormat("en-UK", {
                 style: "currency",
                 currency: "GBP",
@@ -64,7 +62,6 @@ export function Header() {
               <FaMoneyBill />
             </h2>
             <strong>
-              <span>£</span>
               {new Intl.NumberFormat("en-UK", {
                 style: "currency",
                 currency: "GBP",
@@ -79,7 +76,6 @@ export function Header() {
               <FaHandHoldingUsd />
             </h2>
             <strong>
-              <span style={{ color: "#1ad442" }}>£</span>
               {new Intl.NumberFormat("en-UK", {
                 style: "currency",
                 currency: "GBP",
