@@ -1,4 +1,4 @@
-React JS Interface for a small expense and income tracker web application.
+React JS / Typescript Interface for a small expense and income tracker web application.
 
 It uses styled components for the UI.
 
